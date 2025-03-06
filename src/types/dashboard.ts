@@ -1,4 +1,5 @@
 import { DateRange } from 'react-day-picker';
+import { CohortId, EnhancedCohortMetadata } from './cohort';
 
 export type ActionItemType = 'warning' | 'opportunity' | 'success';
 
@@ -73,6 +74,7 @@ export interface TechPartnerMetrics {
 }
 
 export interface TechPartnerPerformance {
+  cohortId: CohortId;
   partner: string;
   timeSeriesData: Array<{
     week: string;
@@ -174,6 +176,8 @@ export interface ContributorGrowth {
 }
 
 export interface ProcessedData {
+  cohortId: CohortId;
+  cohortMetadata: EnhancedCohortMetadata;
   weeklyChange: number;
   activeContributors: number;
   totalContributions: number;
@@ -272,6 +276,7 @@ export interface GitHubUserContribution {
 }
 
 export interface EnhancedGitHubData extends GitHubData {
+  cohortId: CohortId;
   userContributions: Record<string, GitHubUserContribution>;
   contributionDiscrepancies: Array<{
     username: string;
@@ -280,6 +285,8 @@ export interface EnhancedGitHubData extends GitHubData {
 }
 
 export interface ConsolidatedData {
+  cohortId: CohortId;
+  cohortMetadata: EnhancedCohortMetadata;
   projectBoard: GitHubData;
   userContributions: Record<string, GitHubUserContribution>;
   validatedContributions: Record<string, ValidatedContribution>;
@@ -298,6 +305,7 @@ export interface ValidatedContribution {
 }
 
 export interface DashboardMetrics {
+  cohortId: CohortId;
   totalContributions: number;
   activeContributors: number;
   averageEngagement: number;
@@ -345,4 +353,4 @@ export interface GitHubIssue {
     merged_at: string | null;
   };
   requested_reviewers?: Array<{ login: string }>;
-} 
+}
